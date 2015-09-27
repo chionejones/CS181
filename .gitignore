@@ -41,3 +41,19 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# All platforms 
+Library
+Temp
+Build
+*.csproj
+*.pidb 
+*.unityproj 
+*.sln 
+*.userprefs 
+
+# OS X specific files that we don't want either 
+.DS_Store
+*.swp
+*.Trashes 
+
