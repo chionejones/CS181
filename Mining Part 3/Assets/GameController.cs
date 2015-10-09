@@ -3,21 +3,7 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject bronzePrefabCube;
-    public GameObject silverPrefabCube;
-    public GameObject goldPrefabCube;
-    public GameObject kryptonitePrefabCube;
-    private bool recentlySpawnedGold = false;
-    private bool recentlySpawnedKryptonite = false;
-    public static int bronzeCount = 0;
-    public static int silverCount = 0;
-    public static int goldCount = 0;
-    public static int kryptoniteCount = 0;
-    public static int bronzePoints = 1;
-    public static int silverPoints = 10;
-    public static int goldPoints = 100;
-    public static int kryptonitePoints = 1000;
-    public static int score = 0;
+    public GameObject cubePrefab;
     float spawnFrequency = 3.0f;
     float timeToAct = 0.0f;
     float spawnSilverTime = 12.0f;
@@ -29,54 +15,20 @@ public class GameController : MonoBehaviour
         timeToAct += spawnFrequency;
     }
 
-
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= timeToAct)
+        if (Time.time >= timeToAct && Time.time < spawnSilverTime + stopSpawningTime)
         {
-            if (silverCount >= 1 && goldCount >= 1 && silverCount == goldCount || silverCount == goldCount + kryptoniteCount || goldCount == silverCount + kryptoniteCount)
+            GameObject myCube = (GameObject)Instantiate(cubePrefab, new Vector3(Random.Range(-9f, 9f), Random.Range(-3f, 5f), 0), Quaternion.identity);
+            if (Time.time >= spawnSilverTime)
             {
-                Instantiate(kryptonitePrefabCube,
-                new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 4f), 0), Quaternion.identity);
-                recentlySpawnedKryptonite = true;
-                recentlySpawnedGold = true;
-                kryptoniteCount++;
+                myCube.GetComponent<Renderer>().material.color = Color.white;
             }
-            else if (bronzeCount == 2 && silverCount == 2 && recentlySpawnedGold == false)
-            {
-                Instantiate(goldPrefabCube,
-                new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 4f), 0),
-                Quaternion.identity);
-                goldCount++;
-                recentlySpawnedGold = true;
-            }
-            else if (bronzeCount < 4)
-            {
-                Instantiate(bronzePrefabCube,
-                new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 4f), 0),
-                Quaternion.identity);
-                bronzeCount++;
-                recentlySpawnedGold = false;
-
-
-            }
-            else if (bronzeCount >= 4)
-            {
-                Instantiate(silverPrefabCube, new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 4f), 0), Quaternion.identity);
-                silverCount++;
-                recentlySpawnedGold = false;
-                recentlySpawnedKryptonite = false;
-
-            }
-
-
-
+            myCube.GetComponent<Renderer>().material.color = Color.red;
             timeToAct += spawnFrequency;
         }
 
     }
 }
-
-
 

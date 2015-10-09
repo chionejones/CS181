@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 404542b02e8ecf2479e272628cdbf5f2
+timeCreated: 1444164768
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - cubePrefab: {fileID: 102174, guid: cc6c1cc182217e6499351cd58a253216, type: 2}
+  - bronzePrefabCube: {fileID: 150002, guid: 7636fcc65de6f384893b973c867178eb, type: 2}
+  - silverPrefabCube: {fileID: 170482, guid: f28c9fb33cfe326458949452113d63e5, type: 2}
+  - goldPrefabCube: {fileID: 113636, guid: 77e28d9ff536ddd4da16bf926bb6b031, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
